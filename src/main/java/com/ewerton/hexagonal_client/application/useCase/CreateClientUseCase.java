@@ -1,8 +1,11 @@
 package com.ewerton.hexagonal_client.application.useCase;
 
+import org.springframework.stereotype.Service;
+
 import com.ewerton.hexagonal_client.core.domain.model.Client;
 import com.ewerton.hexagonal_client.core.domain.port.out.ClientRepositoryPort;
 
+@Service
 public class CreateClientUseCase {
     private final ClientRepositoryPort clientReposiory;
 
