@@ -15,7 +15,7 @@ public class CreateClientUseCase {
 
     public Client execute(String name, String email) {
         try {
-            Client client = new Client(name, email);
+            Client client = new Client(name, email, null);
             return clientReposiory.create(client);
         } catch (Exception e) {
             throw new RuntimeException("Error creating client: " + e.getMessage(), e);
