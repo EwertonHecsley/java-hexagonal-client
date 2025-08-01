@@ -28,7 +28,7 @@ public class ClientRepositoryAdapter implements ClientRepositoryPort {
     @Override
     public Optional<Client> findById(UUID id) {
 
-        Optional<ClientEntity> entity = repository.findById(id.toString());
+        Optional<ClientEntity> entity = repository.findById(id);
         if (entity.isEmpty()) {
             return Optional.empty();
         }

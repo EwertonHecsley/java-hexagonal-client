@@ -1,17 +1,19 @@
 package com.ewerton.hexagonal_client.core.domain.model;
 
+import java.util.UUID;
+
 public class Client {
-    private String id;
+    private UUID id;
     private String name;
     private String email;
 
-    public Client(String name, String email, String id) {
+    public Client(String name, String email, UUID id) {
         this.updateName(name);
         this.updateEmail(email);
         this.id = id;
     }
 
-    public String getId() {
+    public UUID getId() {
         return this.id;
     }
 
