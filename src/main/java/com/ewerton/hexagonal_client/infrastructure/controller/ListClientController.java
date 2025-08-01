@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ewerton.hexagonal_client.application.useCase.ListAllClientUseCase;
 import com.ewerton.hexagonal_client.core.domain.model.Client;
+import com.ewerton.hexagonal_client.infrastructure.controller.dto.ClientResponse;
 import com.ewerton.hexagonal_client.infrastructure.controller.dto.ListClientResponse;
 
 import java.util.List;
@@ -24,8 +25,10 @@ public class ListClientController {
     @GetMapping
     public ResponseEntity<ListClientResponse> handlerList() {
         List<Client> clients = this.useCase.execute();
-        return ResponseEntity.ok()
-                .body(new ListClientResponse("Clients listed successfully", clients));
+        List<ClientResponse> response = clients.stream()
+                .map(client -> new ClientResponse(client.getId(), client.getName(), client.getEmail()))
+                .toList();
+        return ResponseEntity.ok(new ListClientResponse("Clients listed sucessfully", response));
     }
 
 }
